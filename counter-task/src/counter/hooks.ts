@@ -1,6 +1,9 @@
-import { inMemoryCounterGateway } from "./gateways";
+import { inMemoryCounterGateway, remoteCounterGateway } from "./gateways";
 import type { CounterGateway } from "./types";
 
 export const useCounterGateway = (): CounterGateway => {
-  return inMemoryCounterGateway;
+  if (import.meta.env.DEV) {
+    return inMemoryCounterGateway;
+  }
+  return remoteCounterGateway;
 };
