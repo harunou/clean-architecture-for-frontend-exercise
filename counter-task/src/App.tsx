@@ -1,5 +1,7 @@
+import Counter from "./counter/Counter";
+
 function App() {
-  return null;
+  return <Counter />;
 }
 
 export default App;
