@@ -7,9 +7,9 @@ function Counter() {
   const [count, setCount] = useState(INITIAL_COUNT);
 
   // NOTE: inlined presenter unit implements null presenter interface
-  // the presenter has assigned mocked data
-  const countValue = 0;
-  const countStatus = "Positive";
+  const countValue = count;
+  const countStatus =
+    count === 0 ? "Zero" : count > 0 ? "Positive" : "Negative";
 
   // NOTE: inlined controller unit implements null controller interface
   // the controller has assigned mocked data
