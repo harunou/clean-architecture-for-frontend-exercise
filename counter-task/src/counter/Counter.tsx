@@ -12,10 +12,15 @@ function Counter() {
     count === 0 ? "Zero" : count > 0 ? "Positive" : "Negative";
 
   // NOTE: controller unit implemented with constants (null controller)
-  // the controller has assigned mocked data
-  const onIncrementButtonClick = () => {};
-  const onDecrementButtonClick = () => {};
-  const onResetButtonClick = () => {};
+  const onIncrementButtonClick = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+  const onDecrementButtonClick = () => {
+    setCount((prevCount) => prevCount - 1);
+  };
+  const onResetButtonClick = () => {
+    setCount(INITIAL_COUNT);
+  };
 
   // NOTE: view unit
   return (
