@@ -1,15 +1,5 @@
 import { useEffect, useState } from "react";
-
-interface CounterGateway {
-  getCount: () => Promise<number>;
-  incrementCount: () => Promise<number>;
-  decrementCount: () => Promise<number>;
-  resetCount: () => Promise<number>;
-}
-
-const useCounterGateway = (): CounterGateway => {
-  return {} as CounterGateway;
-};
+import { useCounterGateway } from "./hooks";
 
 const INITIAL_COUNT = 0;
 
