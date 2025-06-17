@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-interface CounterGateway {}
+interface CounterGateway {
+  getCount: () => Promise<number>;
+  incrementCount: () => Promise<number>;
+  decrementCount: () => Promise<number>;
+  resetCount: () => Promise<number>;
+}
 
 const useCounterGateway = (): CounterGateway => {
   return {} as CounterGateway;
@@ -21,15 +26,28 @@ function Counter() {
     count === 0 ? "Zero" : count > 0 ? "Positive" : "Negative";
 
   // NOTE: controller unit implemented with constants (null controller)
-  const onIncrementButtonClick = () => {
-    setCount((prevCount) => prevCount + 1);
+  const onIncrementButtonClick = async () => {
+    const remoteCount = await gateway.incrementCount();
+    setCount(remoteCount);
   };
-  const onDecrementButtonClick = () => {
-    setCount((prevCount) => prevCount - 1);
+  const onDecrementButtonClick = async () => {
+    const remoteCount = await gateway.decrementCount();
+    setCount(remoteCount);
   };
-  const onResetButtonClick = () => {
-    setCount(INITIAL_COUNT);
+  const onResetButtonClick = async () => {
+    const remoteCount = await gateway.resetCount();
+    setCount(remoteCount);
   };
+  const onCounterMount = async () => {
+    const remoteCount = await gateway.getCount();
+    setCount(remoteCount);
+  };
+
+  // NOTE: view unit lifecycle hook
+  useEffect(() => {
+    onCounterMount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // NOTE: view unit
   return (
