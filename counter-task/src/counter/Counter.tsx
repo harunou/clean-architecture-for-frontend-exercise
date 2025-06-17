@@ -7,9 +7,9 @@ function Counter() {
   const [count, setCount] = useState(INITIAL_COUNT);
 
   // NOTE: presenter unit implemented with constants (null presenter)
-  // the presenter has assigned mocked data
-  const countValue = 0;
-  const countStatus = "Positive";
+  const countValue = count;
+  const countStatus =
+    count === 0 ? "Zero" : count > 0 ? "Positive" : "Negative";
 
   // NOTE: controller unit implemented with constants (null controller)
   // the controller has assigned mocked data
