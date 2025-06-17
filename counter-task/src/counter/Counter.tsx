@@ -1,10 +1,19 @@
 import { useState } from "react";
 
+interface CounterGateway {}
+
+const useCounterGateway = (): CounterGateway => {
+  return {} as CounterGateway;
+};
+
 const INITIAL_COUNT = 0;
 
 function Counter() {
   // NOTE: entities store unit
   const [count, setCount] = useState(INITIAL_COUNT);
+
+  // NOTE: gateway unit
+  const gateway = useCounterGateway();
 
   // NOTE: inlined presenter unit implements null presenter interface
   const countValue = count;
