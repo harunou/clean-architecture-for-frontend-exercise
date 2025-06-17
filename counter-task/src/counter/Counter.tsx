@@ -1,4 +1,11 @@
+import { useState } from "react";
+
+const INITIAL_COUNT = 0;
+
 function Counter() {
+  // NOTE: entities store unit
+  const [count, setCount] = useState(INITIAL_COUNT);
+
   // NOTE: inlined presenter unit implements null presenter interface
   // the presenter has assigned mocked data
   const countValue = 0;
